@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Calculator</title>
+</head>
+<style>
+
+
+body{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container{
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.335);
+  padding: 20px;
+}
+
+input{
+  width: 230px;
+  text-align: right;
+}
+
+button{
+  width: 35px;
+  height: 30px;
+  margin: 10px;
+}
+  
+</style>
+<body>
+  <div class="container">
+    <div>
+      <input type="text" placeholder="0" id="js-input">
+    </div>
+    <div class="buttons">
+      <button>AC</button>
+      <button>DEL</button>
+      <button>%</button>
+      <button>/</button>
+    </div>
+
+    <div class="buttons">
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>*</button>
+    </div>
+    
+    <div class="buttons">
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>-</button>
+    </div>
+
+    <div class="buttons">
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>+</button>
+    </div>
+
+    <div class="buttons">
+      <button>00</button>
+      <button>0</button>
+      <button>_</button>
+      <button>=</button>
+    </div>
+  </div>
+
+  <script>
+    let string="";
+    let buttons = document.querySelectorAll('button');
+    let input = document.getElementById('js-input');
+    Array.from(buttons).forEach(button => {
+      button.addEventListener('click', (e) =>{
+        if(e.target.innerHTML == '='){
+          string = eval(string);
+          input.value=string;
+        }
+        else if(e.target.innerHTML == 'AC'){
+          string = "";
+          input.value = string;
+        }
+        else if(e.target.innerHTML == 'DEL'){
+          string = string.substring(0,string.length-1);
+          input.value = string;
+        }
+        else{
+          string = string + e.target.innerHTML;
+          input.value = string;
+        }
+      })
+    })
+  </script>
+</body>
+</html>
